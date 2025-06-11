@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+# 🧪 Testing Workshop: Unit & E2E with Vitest & Playwright
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to this 1-hour workshop on modern frontend testing using **Vitest** for unit tests and **Playwright** for end-to-end (E2E) tests.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🗂️ Workshop Overview
 
-## Expanding the ESLint configuration
+### 1. 🔺 Testing Pyramid vs. 🏆 Testing Trophy
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+We’ll begin by reviewing two major mental models in software testing:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### ✅ Testing Pyramid
+- Promotes **more unit tests**, fewer integration and E2E tests.
+- Fast, cheap, but less confidence in real-world behavior.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### 🏆 Testing Trophy (by Kent C. Dodds)
+- Focuses on a balanced strategy:
+    - Few static tests (lint, types)
+    - Many unit tests
+    - Moderate integration tests
+    - A few high-confidence E2E tests
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 💡 Learning Goals
+
+- Understand **where** each type of test fits.
+- Write **unit tests with Vitest** for a React component.
+- Write **E2E tests with Playwright** for a user flow.
+- Understand real vs. mock testing tradeoffs.
+
+---
+
+## 🧱 Project Features
+
+This project has two sample features:
+
+| Feature | Description | Test Type |
+|--------|-------------|-----------|
+| **Login Page** | A simple login form with validation | ✅ Unit tested with Vitest |
+| **User Preferences Form** | A form with dynamic content based on user input | 🔍 E2E tested with Playwright |
+
+---
+
+## 🧪 Part 1: Unit Testing with Vitest
+
+We’ll write unit tests for the **Login Page**:
+
+- Render form elements
+- Validate required fields
+- Assert success/failure messages
+
+### Run unit tests:
+
+```bash
+npm run test:unit
+# or with UI:
+npx vitest --ui
